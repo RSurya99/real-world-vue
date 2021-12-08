@@ -197,6 +197,20 @@
       "date": "2021-12-22T06:13:00.000Z",
       "time": "19:00",
       "attendees": []
+    },
+    {
+      "id": 920228,
+      "category": "community",
+      "organizer": {
+        "id": "abc123",
+        "name": "John Doe"
+      },
+      "title": "USA winning the OWC again",
+      "description": "USA is win berturut-turut selama 3 years",
+      "location": "worldwide",
+      "date": "2021-12-15T09:13:00.000Z",
+      "time": "10:00",
+      "attendees": []
     }
   ]
 }
