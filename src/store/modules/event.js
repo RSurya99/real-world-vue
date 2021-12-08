@@ -24,12 +24,27 @@ export const mutations = {
 }
 
 export const actions = {
-  createEvent({ commit }, payload) {
-    return EventService.postEvent(payload).then(() => {
-      commit('addEvent', payload)
-      // call other module actions
-      // dispatch('moduleName/actionToCall', payload, { root: true })
-    })
+  createEvent({ commit, dispatch }, payload) {
+    return EventService.postEvent(payload)
+      .then(() => {
+        commit('addEvent', payload)
+        const notification = {
+          type: 'success',
+          message: 'Your event has been created',
+        }
+        dispatch('notification/add', notification, { root: true })
+        // call other module actions
+        // dispatch('moduleName/actionToCall', payload, { root: true })
+      })
+      .catch((error) => {
+        const notification = {
+          type: 'error',
+          message:
+            'There is a a problem when creating events: ' + error.message,
+        }
+        dispatch('notification/add', notification, { root: true })
+        throw error
+      })
   },
   fetchEvents({ commit, dispatch }, { perPage, page }) {
     EventService.getEvents(perPage, page)
@@ -45,7 +60,7 @@ export const actions = {
         dispatch('notification/add', notification, { root: true })
       })
   },
-  fetchEvent({ commit, getters }, id) {
+  fetchEvent({ commit, getters, dispatch }, id) {
     var event = getters.getEventById(id)
     if (event) {
       commit('setEvent', event)
@@ -55,7 +70,12 @@ export const actions = {
           commit('setEvent', response.data)
         })
         .catch((error) => {
-          console.log('There was an error ' + error)
+          const notification = {
+            type: 'error',
+            message:
+              'There was a problem when fetching event: ' + error.message,
+          }
+          dispatch('notification/add', notification, { root: true })
         })
     }
   },
