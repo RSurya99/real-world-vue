@@ -32,24 +32,42 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex'
-import NProgress from 'nprogress'
-import store from '@/store'
+// import { mapState } from 'vuex'
+// import NProgress from 'nprogress'
+// import store from '@/store'
 
 export default {
-  props: ['id'],
-  beforeRouteEnter(routeTo, routeFrom, next) {
-    NProgress.start()
-    store.dispatch('event/fetchEvent', routeTo.params.id).then(() => {
-      NProgress.done()
-      next()
-    })
+  props: {
+    id: {
+      type: Number,
+    },
+    event: {
+      type: Object,
+      required: true,
+    },
   },
-  computed: {
-    ...mapState({
-      event: (state) => state.event.event,
-    }),
-  },
+  // beforeRouteEnter(routeTo, routeFrom, next) {
+  //   // Called before component is created
+  //   // Doesn't have access to "this"
+  //   NProgress.start()
+  //   store.dispatch('event/fetchEvent', routeTo.params.id).then(() => {
+  //     NProgress.done()
+  //     next()
+  //   })
+  // },
+  // beforeRouteUpdate(routeTo, routeFrom, next) {
+  //   // Called when the route changes, but still using the same component
+  //   // Has access to "this"
+  // },
+  // beforeRouteLeave(routeTo, routeFrom, next) {
+  //   // Called when this component is navigated away from
+  //   // Has access to "this"
+  // },
+  // computed: {
+  //   ...mapState({
+  //     event: (state) => state.event.event,
+  //   }),
+  // },
 }
 </script>
 <style scoped>

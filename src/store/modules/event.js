@@ -64,10 +64,12 @@ export const actions = {
     var event = getters.getEventById(id)
     if (event) {
       commit('setEvent', event)
+      return event
     } else {
       return EventService.getEvent(id)
         .then((response) => {
           commit('setEvent', response.data)
+          return response.data
         })
         .catch((error) => {
           const notification = {
