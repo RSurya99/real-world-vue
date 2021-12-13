@@ -211,6 +211,20 @@
       "date": "2021-12-15T09:13:00.000Z",
       "time": "10:00",
       "attendees": []
+    },
+    {
+      "id": 4647607,
+      "category": "sustainability",
+      "organizer": {
+        "id": "abc123",
+        "name": "John Doe"
+      },
+      "title": "sus",
+      "description": "amogus",
+      "location": "sus planet",
+      "date": "",
+      "time": "23:00",
+      "attendees": []
     }
   ]
 }
