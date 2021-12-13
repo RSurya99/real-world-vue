@@ -7,31 +7,27 @@
         <option v-for="cat in categories" :key="cat">{{ cat }}</option>
       </select>
       <h3>Name & describe your event</h3>
-      <div class="field">
-        <label>Title</label>
-        <input
-          v-model="event.title"
-          type="text"
-          placeholder="Add an event title"
-        />
-      </div>
-      <div class="field">
-        <label>Description</label>
-        <input
-          v-model="event.description"
-          type="text"
-          placeholder="Add a description"
-        />
-      </div>
-      <h3>Where is your event?</h3>
-      <div class="field">
-        <label>Location</label>
-        <input
-          v-model="event.location"
-          type="text"
-          placeholder="Add a location"
-        />
-      </div>
+      <BaseInput
+        label="Title"
+        type="text"
+        placeholder="Title"
+        v-model="event.title"
+        class="field"
+      />
+      <BaseInput
+        label="Description"
+        type="text"
+        placeholder="Description"
+        v-model="event.description"
+        class="field"
+      />
+      <BaseInput
+        label="Location"
+        type="text"
+        placeholder="Location"
+        v-model="event.location"
+        class="field"
+      />
       <h3>When is your event?</h3>
       <div class="field">
         <label>Date</label>
@@ -50,7 +46,7 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker'
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 import NProgress from 'nprogress'
 
 export default {
@@ -58,7 +54,6 @@ export default {
     Datepicker,
   },
   computed: {
-    ...mapGetters(['catLength', 'getEventById']),
     ...mapState(['user']),
   },
   data() {

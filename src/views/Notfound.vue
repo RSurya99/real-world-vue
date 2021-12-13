@@ -2,7 +2,7 @@
   <div>
     <h1>Oops!</h1>
     <h3>The {{ resource }} you are looking for is not here.</h3>
-    <router-link :to="{ name: 'event-list' }">Homepagee</router-link>
+    <router-link :to="{ name: 'event-list' }">Homepage</router-link>
   </div>
 </template>
 
