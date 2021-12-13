@@ -91,6 +91,9 @@ strong {
 small {
   font-size: 80%;
 }
+.error {
+  border-color: tomato;
+}
 .eyebrow {
   font-size: 20px;
 }
